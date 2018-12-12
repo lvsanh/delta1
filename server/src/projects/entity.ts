@@ -3,8 +3,10 @@ import {
     Entity, 
     PrimaryGeneratedColumn, 
     Column, 
-    OneToMany} from 'typeorm'
+    OneToMany,
+    ManyToOne} from 'typeorm'
   import Message from '../messages/entity'
+  import User from '../users/entity'
   
   @Entity()
   export default class Project extends BaseEntity {
@@ -15,7 +17,10 @@ import {
     @Column('text', {nullable:true})
     name: string
     
-    @OneToMany(_ => Message, message => message.project)
+    @OneToMany(_ => Message, message => message.project, {eager:true})
     messages: Message[]
+
+    @ManyToOne(_ => User, user => user.projects)
+    user: User
   
   }

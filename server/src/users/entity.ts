@@ -2,7 +2,8 @@ import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, OneToMany } from 't
 import { Exclude } from 'class-transformer';
 import { MinLength, IsString, IsEmail } from 'class-validator';
 import * as bcrypt from 'bcrypt'
-import  Message  from '../messages/entity';
+import  Message  from '../messages/entity'
+import Project from '../projects/entity'
 
 @Entity()
 export default class User extends BaseEntity {
@@ -43,4 +44,7 @@ export default class User extends BaseEntity {
   // http://typeorm.io/#/many-to-one-one-to-many-relations
   @OneToMany(_ => Message, message => message.user) 
   messages: Message[]
+
+  @OneToMany(_ => Project, project => project.user) 
+  projects: Project[]
 }
