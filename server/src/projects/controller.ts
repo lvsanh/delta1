@@ -12,6 +12,7 @@ import {
   } from 'routing-controllers'
   import Project from './entity'
   import User from '../users/entity'
+  import {io} from '../index'
   
   @JsonController()
   export default class ProjectController {
@@ -39,6 +40,12 @@ import {
     ) {
       const entity = await project.save()
       entity.user = user
+
+      io.emit('action', {
+        type: 'ADD_PROJECT',
+        payload: entity
+      })
+  
       return entity.save()
     }
   
