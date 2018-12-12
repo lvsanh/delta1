@@ -19,9 +19,9 @@ export default class MessageController {
     
     const project = await Project.findOne({where:{id}})
     const entity = Message.create({
-        ...message,
-        project,
-        user
+    ...message,
+    project,
+    user
     }).save()
 
     io.emit('action', {
