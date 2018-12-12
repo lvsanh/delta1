@@ -14,15 +14,12 @@ import {
     @PrimaryGeneratedColumn()
     id?: number
   
-    @Column('text', {nullable:true})
-    picture: string
-  
     @IsString()
     @Column('text', {nullable:false})
     content: string
   
-    @Column('timestamp', {nullable:false})
-    time: string
+    @Column('timestamp', {default: () => "CURRENT_TIMESTAMP"})
+    time: Date
    
     @ManyToOne(_ => User, user => user.messages)
     user: User
