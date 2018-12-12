@@ -32,7 +32,8 @@ import {
       @Param('id') id: number,
       @CurrentUser() user:User
       ) {
-      return await Project.findOne({where:{id,user},relations:["messages"]})
+      // return await Project.findOne({where:{id,user},relations:["messages"]})
+      return await Project.findOne({where:{id,user}})
      
     }
   
