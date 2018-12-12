@@ -25,7 +25,7 @@ export default class MessageController {
     }).save()
 
     io.emit('action', {
-      type: 'CREATE_MESSAGE',
+      type: 'ADD_MESSAGE',
       payload: entity
     })
 
