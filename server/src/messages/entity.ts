@@ -21,7 +21,7 @@ import {
     @Column('timestamp', {default: () => "CURRENT_TIMESTAMP"})
     time: Date
    
-    @ManyToOne(_ => User, user => user.messages)
+    @ManyToOne(_ => User, user => user.messages, {eager:true})
     user: User
   
     @ManyToOne(_ => Project, project => project.messages)
