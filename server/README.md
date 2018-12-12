@@ -1,15 +1,15 @@
-# Tic Tac Toe Server
+# ChatApp Server
 
-This is a server for playing a multiplayer Tic Tac Toe game. 
+This is a server for ChatApp
 
 It has these endpoints:
 
 * `POST /users`: sign up as new user
 * `POST /logins`: log in and receive a JWT
-* `POST /games`: create a new game
-* `POST /games/:id/players`: join an existing game
-* `PATCH /games/:id`: update an existing game
-* `GET /games`: list all games
+* `GET /projects`: list all projects
+* `GET /projects/:id`: list a project
+* `POST /projects`: create a new project
+* `POST /projects/:id/messages`: create a new message
 * `GET /users`: list all users
 
 ## Running
@@ -18,5 +18,3 @@ It has these endpoints:
 * Install the dependencies using `yarn install`
 * Compile the app (Typescript > Javascript) using `yarn compile` (during development you can use `yarn watch`)
 * `yarn start`
-
-You can run the tests with `yarn test`. Currently they only cover the game logic. 
