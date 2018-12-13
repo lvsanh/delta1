@@ -1,10 +1,14 @@
-require('../styles/App.css');
-require('../styles/Login.css');
+/* eslint-disable import/first */
+
+// require('../styles/App.css');
+// require('../styles/Login.css');
 
 import React from 'react';
 import ChatApp from './ChatApp';
+import '../../styles/App.css'
+import '../../styles/Login.css'
 
-class App extends React.Component {
+class Chatbot extends React.Component {
   constructor(props) {
     super(props);
     this.state = { username: '' };
@@ -48,7 +52,6 @@ class App extends React.Component {
   }
 
 }
-App.defaultProps = {
-};
+Chatbot.defaultProps = {};
 
-export default App;
+export default Chatbot;

@@ -5,7 +5,9 @@ import SignupPage from './components/signup/SignupPage'
 import LogoutPage from './components/logout/LogoutPage'
 import './App.css'
 import TopBar from './components/layout/TopBar'
-import ProjectsListContainer from './components/projects/ProjectsListContainer';
+import ProjectsListContainer from './components/projects/ProjectsListContainer'
+// import Chatbot from './components/chatbot/App'
+import ChatApp from './components/chatbot/ChatApp'
 
 
 class App extends Component {
@@ -21,8 +23,9 @@ class App extends Component {
             <Route exact path="/logout" component={LogoutPage} />
             <Route exact path="/signup" component={SignupPage} />
             <Route exact path="/projects" component={ProjectsListContainer} />
-            
-            <Route exact path="/" render={ () => <Redirect to="/projects" /> } />
+            <Route exact path="/chatbot" component={ChatApp} />
+            <Route exact path="/" render={ () => <Redirect to="/chatbot" /> } />
+
           </main>
         </div>
       </Router>
@@ -30,3 +33,6 @@ class App extends Component {
   }
 }
 export default App
+// <Route exact path="/" render={ () => <Redirect to="/projects" /> } />
+// <Route exact path="/chatbot" component={Chatbot} />
+// <Route exact path="/" render={ () => <Redirect to="/chatbot" /> } />

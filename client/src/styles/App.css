@@ -3,7 +3,11 @@ body {
   margin: 0;
 }
 
-
+html, body, #app, .container {
+  min-height: 100vh;
+  max-height: 100vh;
+  max-width: 100%;
+}
 
 input[type="text"] {
   margin: 10px 0px;

@@ -8,6 +8,7 @@ class ProjectsList extends Component {
                     return (
                         <ul>
                             <li>{project.name}</li>
+                            {console.log(this.props)}
                         </ul>
                     )
                 })}
