@@ -1,9 +1,10 @@
-require('../styles/ChatApp.css');
+/* eslint-disable import/first */
+// require('../../styles/App.css');
 
 import React from 'react';
 import io from 'socket.io-client';
 import config from '../config';
-
+import '../../styles/App.css'
 import Messages from './Messages';
 import ChatInput from './ChatInput';
 
