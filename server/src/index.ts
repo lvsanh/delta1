@@ -61,14 +61,34 @@ io.use(socketIoJwtAuth.authenticate({ secret }, async (payload, done) => {
   else done(null, false, `Invalid JWT user ID`)
 }))
 
-io.on('connect', socket => {
+// Setup socket.io
+io.on('connection', socket => {
+  const username = socket.handshake.query.username
+  console.log(`${username} connected`)
   const name = socket.request.user.firstName
   console.log(`User ${name} just connected`)
 
+  socket.on('client:message', data => {
+    console.log(`${data.username}: ${data.message}`)
+
+    // message received from client, now broadcast it to everyone else
+    socket.broadcast.emit('server:message', data)
+  });
+
   socket.on('disconnect', () => {
+    console.log(`${username} disconnected`)
     console.log(`User ${name} just disconnected`)
   })
 })
+
+// io.on('connect', socket => {
+//   const name = socket.request.user.firstName
+//   console.log(`User ${name} just connected`)
+
+//   socket.on('disconnect', () => {
+//     console.log(`User ${name} just disconnected`)
+//   })
+// })
 
 setupDb()
   .then(_ => {

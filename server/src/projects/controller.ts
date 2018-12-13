@@ -49,7 +49,6 @@ import {
       user
       })
       
-
       io.emit('action', {
         type: 'ADD_PROJECT',
         payload: entity

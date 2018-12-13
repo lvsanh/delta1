@@ -7,21 +7,21 @@ import User from '../users/entity'
 
 @JsonController()
 export default class MessageController {
-    //post messages
-    @Authorized()
-    @Post('/projects/:id/messages')
-    async createMessage(
+  //post messages
+  @Authorized()
+  @Post('/projects/:id/messages')
+  async createMessage(
     @Param('id') id: number,
     @Body() message: Message,
     @CurrentUser() user: User
 
   ) {
-    
-    const project = await Project.findOne({where:{id}})
+
+    const project = await Project.findOne({ where: { id } })
     const entity = Message.create({
-    ...message,
-    project,
-    user
+      ...message,
+      project,
+      user
     }).save()
 
     io.emit('action', {
@@ -32,19 +32,19 @@ export default class MessageController {
     return entity
   }
 
-//load all messages for a project
+  //load all messages for a project
   @Authorized()
   @Get('/projects/:id/messages')
-  async getMessages (
+  async getMessages(
     @Param('id') id: number,
   ) {
-    const project = await Project.findOne({where:{id}})
-    const entity = await Message.find({where:{project},relations:["user","project"]})
+    const project = await Project.findOne({ where: { id } })
+    const entity = await Message.find({ where: { project }, relations: ["user", "project"] })
 
     io.emit('action', {
-        type: 'FETCH_MESSAGES',
-        payload: entity
-      })
+      type: 'FETCH_MESSAGES',
+      payload: entity
+    })
 
     return entity
   }

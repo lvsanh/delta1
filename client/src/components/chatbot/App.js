@@ -52,7 +52,6 @@ class Chatbot extends React.Component {
   }
 
 }
-Chatbot.defaultProps = {
-};
+Chatbot.defaultProps = {};
 
 export default Chatbot;

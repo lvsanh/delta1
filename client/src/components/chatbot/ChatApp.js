@@ -1,12 +1,12 @@
 /* eslint-disable import/first */
 // require('../../styles/App.css');
-
 import React from 'react';
-import io from 'socket.io-client';
-import config from '../config';
+import io from 'socket.io-client'
+import config from '../config'
 import '../../styles/App.css'
-import Messages from './Messages';
-import ChatInput from './ChatInput';
+import Messages from './Messages'
+import ChatInput from './ChatInput'
+import {connect} from 'react-redux'
 
 class ChatApp extends React.Component {
   socket = {};
@@ -47,7 +47,9 @@ class ChatApp extends React.Component {
   render() {
     return (
       <div className="container">
-        <h3>Chat Bot</h3>
+        <h3>Project #id here</h3>
+        <h4>Status #project.status here</h4>
+        <h5>Welcome #user.firstName here</h5>
         <Messages messages={this.state.messages} />
         <ChatInput onSend={this.sendHandler} />
       </div>
@@ -56,7 +58,7 @@ class ChatApp extends React.Component {
 
 }
 ChatApp.defaultProps = {
-  username: 'Anonymous'
+  username: 'codaisseur'
 };
 
 export default ChatApp;
